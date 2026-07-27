@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grow Biz OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#1b1b23",
+                      "secondary-container": "#4a4a5b",
+                      "on-surface": "#e4e1ed",
+                      "primary-fixed": "#ebddff",
+                      "inverse-primary": "#7331df",
+                      "surface-container-highest": "#34343d",
+                      "on-secondary-fixed": "#1a1a29",
+                      "surface-dim": "#13131b",
+                      "secondary-fixed": "#e3e0f6",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed-dim": "#d3bbff",
+                      "surface-variant": "#34343d",
+                      "accent-purple": "#8B5CF6",
+                      "secondary-fixed-dim": "#c7c4d9",
+                      "on-surface-variant": "#ccc3d7",
+                      "secondary": "#c7c4d9",
+                      "on-error": "#690005",
+                      "on-secondary-container": "#bcbace",
+                      "text-primary": "#FFFFFF",
+                      "inverse-on-surface": "#302f39",
+                      "surface-container-high": "#292932",
+                      "on-primary-container": "#dac5ff",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "on-tertiary-container": "#baceff",
+                      "surface-container-lowest": "#0d0d15",
+                      "surface-tint": "#d3bbff",
+                      "background": "#13131b",
+                      "outline": "#958da1",
+                      "tertiary": "#adc6ff",
+                      "surface-bright": "#393842",
+                      "on-tertiary": "#002e6a",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "surface-container": "#1f1f27",
+                      "text-muted": "#94A3B8",
+                      "tertiary-container": "#0054b6",
+                      "glow-purple": "rgba(109, 40, 217, 0.15)",
+                      "on-secondary": "#2f2f3f",
+                      "error": "#ffb4ab",
+                      "primary": "#d3bbff",
+                      "outline-variant": "#4a4455",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#250059",
+                      "primary-container": "#6d28d9",
+                      "on-primary": "#3f008d",
+                      "on-primary-fixed-variant": "#5b00c5",
+                      "tertiary-fixed": "#d8e2ff",
+                      "inverse-surface": "#e4e1ed",
+                      "on-tertiary-fixed": "#001a42",
+                      "on-secondary-fixed-variant": "#464556",
+                      "surface-glass": "rgba(22, 22, 37, 0.7)",
+                      "on-background": "#e4e1ed",
+                      "surface": "#13131b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "48px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "display-xl": ["Montserrat"],
+                      "label-numeric": ["Space Grotesk"],
+                      "label-caps": ["Space Grotesk"],
+                      "headline-lg": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "title-md": ["Montserrat"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Montserrat"]
+              },
+              "fontSize": {
+                      "display-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-numeric": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "title-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 22, 37, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #d3bbff 0%, #8B5CF6 100%);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(139, 92, 246, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden selection:bg-accent-purple selection:text-white relative min-h-screen">
+<!-- Background Shader -->
+<div class="fixed inset-0 w-full h-full z-0 pointer-events-none opacity-40">
+<canvas id="shader-canvas-ANIMATION_4" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_4');
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+  const fs = `precision highp float; varying vec2 v_texCoord; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse; void main() { vec2 p = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.y, u_resolution.x); float t = u_time * 0.2; vec3 col1 = vec3(0.427, 0.157, 0.851); vec3 col2 = vec3(0.231, 0.510, 0.965); vec3 col3 = vec3(0.043, 0.043, 0.075); float noise = sin(p.x * 2.0 + t) * cos(p.y * 2.0 - t); noise += sin(p.y * 3.0 + t * 1.5) * 0.5; vec3 finalCol = mix(col3, col1, clamp(noise * 0.5 + 0.5, 0.0, 1.0)); finalCol = mix(finalCol, col2, clamp(sin(length(p) - t) * 0.3, 0.0, 1.0)); float glow = 0.01 / length(p - vec2(sin(t), cos(t)) * 0.5); finalCol += col1 * glow; gl_FragColor = vec4(finalCol * 0.4, 1.0); }`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- Announcement Bar -->
+<div class="bg-primary/10 border-b border-primary/20 relative z-50">
+<div class="max-w-container-max mx-auto px-gutter py-2 flex items-center justify-center gap-4 text-sm text-primary">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-purple opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-medium tracking-wide uppercase font-label-caps">Introducing AI Automation 2.0 — Experience the future of business management.</span>
+<a class="underline hover:text-white transition-colors" href="#">Learn More</a>
+</div>
+</div>
+<!-- TopNavBar -->
+<header class="bg-surface-glass backdrop-blur-xl sticky top-0 w-full z-40 border-b border-white/10 shadow-md">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-2 cursor-pointer hover:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">bubble_chart</span>
+<span class="font-display-xl text-title-md font-bold text-on-surface tracking-tight">Grow Biz OS</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#features">Features</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#solutions">Solutions</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#pricing">Pricing</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Resources</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Customers</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hidden sm:block" href="#">Login</a>
+<a class="btn-primary text-on-primary font-medium px-6 py-2.5 rounded-full hover:scale-95 transition-transform text-sm" href="#">Request Demo</a>
+</div>
+</div>
+</header>
+<div class="relative z-10">
+<!-- Hero Section -->
+<main class="relative pt-24 pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-container/20 via-transparent to-transparent"></div>
+<div class="absolute inset-0 bg-background mix-blend-multiply opacity-50"></div>
+<div class="absolute inset-0 overflow-hidden" id="particles-container"></div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+<!-- Left Content -->
+<div class="flex flex-col gap-8 max-w-2xl">
+<h1 class="font-display-xl text-display-xl text-text-primary text-headline-lg-mobile md:text-display-xl leading-tight">
+                        Run Your Entire Business on <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-purple">One Platform.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Grow Biz OS is an AI-powered Business Operating System that combines CRM, Sales, Marketing, HR, Projects, Finance, Automation and Analytics into one intelligent platform.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+<a class="btn-primary w-full sm:w-auto text-on-primary font-medium px-8 py-4 rounded-full text-center flex items-center justify-center gap-2" href="#">
+                            Request Demo
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="btn-secondary w-full sm:w-auto text-text-primary font-medium px-8 py-4 rounded-full text-center" href="#">
+                            Start Free Trial
+                        </a>
+<a class="w-full sm:w-auto text-on-surface-variant hover:text-accent-purple font-label-numeric font-medium px-4 py-4 text-center flex items-center justify-center gap-2 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent-purple transition-colors">play_circle</span>
+                            Watch Demo
+                        </a>
+</div>
+</div>
+<!-- Right Visual - 3D Mockup Container -->
+<div class="relative w-full aspect-[4/3] lg:aspect-square flex items-center justify-center perspective-1000">
+<div class="relative w-full h-full max-h-[600px] glass-panel rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(109,40,217,0.2)] transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out group">
+<!-- Mockup Top Bar -->
+<div class="h-8 bg-surface-dim/80 backdrop-blur-md border-b border-white/5 flex items-center px-4 gap-2 absolute top-0 w-full z-10">
+<div class="w-2.5 h-2.5 rounded-full bg-error/80"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-accent-purple/80"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/80"></div>
+</div>
+<!-- Dashboard Image Injection -->
+<div class="absolute inset-0 pt-8 bg-surface-container-low">
+<img alt="Grow Biz OS Dashboard" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAYvCjLSGFQmHWl1xYAUqnXPr6ZSzHLwXLRawqCBoy7disl6S3In3xAMizjxGluuZ5Ztjw5kJx9Vt0em25_YB2xI2kL1iphVRbdkVL0TyYjvM_ElVnR64i5FUYyuv9vWni7Ou1tB9FG43BfYPS8ZzWd4BDmah34ZOHg_AQX1hDy0CHHdJsLzW1K0ZZHW8NuFNSXvsKEw2N_IzMwf1nIjwvezZjwRV_nk7k7SY6d__ytpWkXAxCQFVcAd4Yfj7VaOgSxeMFPQB_S2s"/>
+</div>
+<!-- Floating Badges -->
+<div class="absolute -right-6 top-1/4 glass-panel px-4 py-3 rounded-xl flex items-center gap-3 animate-[bounce_4s_infinite]">
+<span class="material-symbols-outlined text-accent-purple bg-accent-purple/20 p-2 rounded-lg">trending_up</span>
+<div>
+<div class="font-label-caps text-on-surface-variant text-[10px]">REVENUE GROWTH</div>
+<div class="font-label-numeric text-primary">+124%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Section -->
+<div class="mt-32 pt-16 border-t border-white/5 relative z-10">
+<p class="text-center font-label-caps text-on-surface-variant mb-12">COMPANIES USING GROW BIZ OS</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center justify-center p-6 glass-panel rounded-2xl group hover:border-accent-purple/30 transition-colors">
+<span class="font-display-xl text-headline-lg text-text-primary group-hover:text-primary transition-colors">10,000+</span>
+<span class="font-label-caps text-on-surface-variant mt-2 text-center">Businesses</span>
+</div>
+<div class="flex flex-col items-center justify-center p-6 glass-panel rounded-2xl group hover:border-accent-purple/30 transition-colors">
+<span class="font-display-xl text-headline-lg text-text-primary group-hover:text-primary transition-colors">250k+</span>
+<span class="font-label-caps text-on-surface-variant mt-2 text-center">Users</span>
+</div>
+<div class="flex flex-col items-center justify-center p-6 glass-panel rounded-2xl group hover:border-accent-purple/30 transition-colors">
+<span class="font-display-xl text-headline-lg text-text-primary group-hover:text-primary transition-colors">50M+</span>
+<span class="font-label-caps text-on-surface-variant mt-2 text-center">Tasks Managed</span>
+</div>
+<div class="flex flex-col items-center justify-center p-6 glass-panel rounded-2xl group hover:border-accent-purple/30 transition-colors">
+<span class="font-display-xl text-headline-lg text-text-primary group-hover:text-primary transition-colors">99.9%</span>
+<span class="font-label-caps text-on-surface-variant mt-2 text-center">Uptime</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Business Problems Section -->
+<section class="py-24 max-w-container-max mx-auto px-gutter relative z-10" id="problems">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-display-xl text-headline-lg text-text-primary mb-6">Tired of fragmented tools?</h2>
+<p class="text-body-lg text-on-surface-variant">Silos cost you time and money. Constantly switching apps, migrating data manually, and paying for overlapping subscriptions is slowing your growth.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-panel p-8 rounded-2xl text-center border-t-4 border-error/50">
+<span class="material-symbols-outlined text-4xl text-error mb-4">link_off</span>
+<h3 class="text-title-md font-semibold text-text-primary mb-3">Disconnected Data</h3>
+<p class="text-on-surface-variant">Your customer info lives in 5 different places, making personalized experiences impossible.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-t-4 border-error/50">
+<span class="material-symbols-outlined text-4xl text-error mb-4">payments</span>
+<h3 class="text-title-md font-semibold text-text-primary mb-3">Bloated Costs</h3>
+<p class="text-on-surface-variant">Paying for Slack, Asana, Salesforce, and Mailchimp adds up to thousands of wasted dollars.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-t-4 border-error/50">
+<span class="material-symbols-outlined text-4xl text-error mb-4">hourglass_empty</span>
+<h3 class="text-title-md font-semibold text-text-primary mb-3">Wasted Time</h3>
+<p class="text-on-surface-variant">Your team spends more time managing tools than doing the actual work that drives revenue.</p>
+</div>
+</div>
+</section>
+<!-- Solutions / Dashboard Showcase -->
+<section class="py-24 bg-surface-container/50 border-y border-white/5 relative z-10" id="solutions">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-display-xl text-headline-lg text-text-primary mb-4">One Unified Experience</h2>
+<p class="text-body-lg text-on-surface-variant">Stop juggling. Start growing. See everything in one beautiful dashboard.</p>
+</div>
+<div class="glass-panel rounded-2xl overflow-hidden p-2 border border-white/10 mx-auto max-w-5xl shadow-[0_0_60px_rgba(109,40,217,0.15)]">
+<div class="bg-surface-dim rounded-xl overflow-hidden relative aspect-[16/9]">
+<img alt="Grow Biz OS Full Dashboard" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAYvCjLSGFQmHWl1xYAUqnXPr6ZSzHLwXLRawqCBoy7disl6S3In3xAMizjxGluuZ5Ztjw5kJx9Vt0em25_YB2xI2kL1iphVRbdkVL0TyYjvM_ElVnR64i5FUYyuv9vWni7Ou1tB9FG43BfYPS8ZzWd4BDmah34ZOHg_AQX1hDy0CHHdJsLzW1K0ZZHW8NuFNSXvsKEw2N_IzMwf1nIjwvezZjwRV_nk7k7SY6d__ytpWkXAxCQFVcAd4Yfj7VaOgSxeMFPQB_S2s"/>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Assistant Teaser -->
+<section class="py-24 max-w-container-max mx-auto px-gutter relative z-10">
+<div class="glass-panel rounded-3xl p-8 lg:p-16 flex flex-col lg:flex-row items-center gap-12 border-primary/30 relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-accent-purple/20 blur-[100px] rounded-full"></div>
+<div class="lg:w-1/2 relative z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 w-fit text-primary font-label-caps uppercase text-label-caps mb-6 border border-primary/20">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> AI Automation 2.0
+            </div>
+<h2 class="font-display-xl text-headline-lg text-text-primary mb-6">Meet your new AI Co-Pilot</h2>
+<p class="text-body-lg text-on-surface-variant mb-8">It doesn't just analyze data; it takes action. From drafting follow-up emails to automatically balancing resources across projects, our AI works 24/7 so you don't have to.</p>
+<a class="btn-primary inline-flex items-center gap-2 text-on-primary font-medium px-6 py-3 rounded-full" href="#">
+                See AI in Action <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="lg:w-1/2 w-full flex justify-center z-10">
+<div class="bg-surface-container p-6 rounded-2xl border border-white/10 shadow-xl w-full max-w-md">
+<div class="flex gap-4 mb-4">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div class="bg-surface p-3 rounded-xl rounded-tl-none border border-white/5 text-sm">
+                        Can you summarize last month's marketing ROI?
+                    </div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-accent-purple/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-accent-purple text-sm">smart_toy</span>
+</div>
+<div class="bg-primary/10 p-4 rounded-xl rounded-tl-none border border-primary/20 text-sm">
+<p class="mb-2">Marketing ROI increased by <strong>24%</strong> in October.</p>
+<p class="text-on-surface-variant">Top performing campaign: "Fall Launch" ($12k spend, $45k revenue). Would you like me to allocate more budget to similar campaigns for November?</p>
+<div class="mt-3 flex gap-2">
+<button class="px-3 py-1.5 bg-surface rounded text-xs border border-white/10 hover:border-primary/50 transition-colors">Yes, allocate +10%</button>
+<button class="px-3 py-1.5 bg-surface rounded text-xs border border-white/10 hover:border-primary/50 transition-colors">Show full report</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Categories Deep Dive -->
+<section class="py-24 relative z-10" id="features">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-display-xl text-headline-lg text-center text-text-primary mb-16">Everything you need to scale</h2>
+<div class="space-y-24">
+<!-- CRM & Sales -->
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/2">
+<div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-2xl">group</span>
+</div>
+<h3 class="text-title-md font-bold mb-4">Intelligent CRM &amp; Sales</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed mb-6">Close deals faster with automated pipelines, lead scoring, and integrated communications. Never let a prospect slip through the cracks again.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> 360° Customer View</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Automated Follow-ups</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Predictive Forecasting</li>
+</ul>
+</div>
+<div class="md:w-1/2 bg-surface-container rounded-2xl h-64 border border-white/10 flex items-center justify-center text-on-surface-variant">
+                    [CRM Pipeline Visual]
+                </div>
+</div>
+<!-- Marketing & Automation -->
+<div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+<div class="md:w-1/2">
+<div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-2xl">campaign</span>
+</div>
+<h3 class="text-title-md font-bold mb-4">Marketing &amp; Automation</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed mb-6">Create complex multi-channel campaigns with a visual drag-and-drop builder. Trigger personalized experiences based on real-time behavior.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Visual Journey Builder</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Omnichannel Campaigns</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> A/B Testing</li>
+</ul>
+</div>
+<div class="md:w-1/2 bg-surface-container rounded-2xl h-64 border border-white/10 flex items-center justify-center text-on-surface-variant">
+                    [Journey Builder Visual]
+                </div>
+</div>
+<!-- Analytics -->
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/2">
+<div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+</div>
+<h3 class="text-title-md font-bold mb-4">Real-time Analytics</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed mb-6">Turn your data into decisions. Customizable dashboards give you a pulse on every aspect of your business, updated instantly.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Custom Dashboards</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Automated Reports</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Revenue Attribution</li>
+</ul>
+</div>
+<div class="md:w-1/2 bg-surface-container rounded-2xl h-64 border border-white/10 flex items-center justify-center text-on-surface-variant">
+                    [Analytics Chart Visual]
+                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Preview -->
+<section class="py-24 bg-surface-container/30 border-y border-white/5 relative z-10" id="pricing">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-display-xl text-headline-lg text-text-primary mb-4">Simple, transparent pricing</h2>
+<p class="text-body-lg text-on-surface-variant">Pay for what you need, scale when you grow. No hidden fees.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<!-- Starter -->
+<div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col">
+<h3 class="text-xl font-semibold mb-2">Starter</h3>
+<p class="text-on-surface-variant text-sm mb-6">For small teams getting started.</p>
+<div class="mb-6"><span class="text-4xl font-bold">$49</span><span class="text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Up to 5 users</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Basic CRM</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Email Marketing</li>
+</ul>
+<button class="btn-secondary w-full py-3 rounded-xl font-medium">Start Free Trial</button>
+</div>
+<!-- Pro (Highlighted) -->
+<div class="glass-panel p-8 rounded-2xl border border-primary/50 relative flex flex-col transform md:-translate-y-4 shadow-[0_0_30px_rgba(109,40,217,0.2)]">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Most Popular</div>
+<h3 class="text-xl font-semibold mb-2 text-primary">Professional</h3>
+<p class="text-on-surface-variant text-sm mb-6">Everything you need to scale.</p>
+<div class="mb-6"><span class="text-4xl font-bold">$149</span><span class="text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Up to 20 users</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Advanced Automation</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> AI Assistant</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Custom Dashboards</li>
+</ul>
+<button class="btn-primary w-full py-3 rounded-xl font-medium text-on-primary">Start Free Trial</button>
+</div>
+<!-- Enterprise -->
+<div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col">
+<h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+<p class="text-on-surface-variant text-sm mb-6">For large organizations.</p>
+<div class="mb-6"><span class="text-4xl font-bold">Custom</span></div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Unlimited users</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Dedicated Success Manager</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> Custom Integrations</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check</span> SLA Guarantees</li>
+</ul>
+<button class="btn-secondary w-full py-3 rounded-xl font-medium">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 max-w-container-max mx-auto px-gutter relative z-10">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-display-xl text-headline-lg text-center text-text-primary mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="glass-panel p-6 rounded-xl border border-white/10">
+<h4 class="font-semibold text-lg mb-2 flex justify-between items-center cursor-pointer">How long does implementation take? <span class="material-symbols-outlined text-on-surface-variant">expand_more</span></h4>
+<p class="text-on-surface-variant text-sm hidden">Most mid-sized teams are fully onboarded and seeing value within 2-3 weeks. We provide dedicated onboarding specialists for Pro and Enterprise plans.</p>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/10">
+<h4 class="font-semibold text-lg mb-2 flex justify-between items-center cursor-pointer">Can I integrate with my existing tools? <span class="material-symbols-outlined text-on-surface-variant">expand_more</span></h4>
+<p class="text-on-surface-variant text-sm hidden">Yes, we offer hundreds of native integrations and a robust API so you can connect to any legacy systems you need to maintain.</p>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/10">
+<h4 class="font-semibold text-lg mb-2 flex justify-between items-center cursor-pointer">Is my data secure? <span class="material-symbols-outlined text-on-surface-variant">expand_more</span></h4>
+<p class="text-on-surface-variant text-sm hidden">Security is our top priority. We are SOC2 compliant, utilize end-to-end encryption, and offer granular role-based access controls.</p>
+</div>
+</div>
+</div>
+</section>
+</div> <!-- End relative z-10 wrapper -->
+<!-- Footer -->
+<footer class="bg-surface-dim w-full py-16 border-t border-white/5 relative z-10">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-gutter max-w-container-max mx-auto">
+<div class="col-span-2 lg:col-span-1 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">bubble_chart</span>
+<span class="font-display-xl text-title-md font-bold text-primary">Grow Biz OS</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                    © 2024 Grow Biz OS. Empowering modern enterprises with AI.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-text-primary">Product</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Solutions</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Company</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-text-primary">Resources</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Resources</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Developers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Support</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-text-primary">Legal</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Terms</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-accent-purple transition-colors hover:underline decoration-accent-purple" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple particle system script
+        const container = document.getElementById('particles-container');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            createParticle();
+        }
+
+        function createParticle() {
+            if(!container) return;
+            const particle = document.createElement('div');
+            particle.classList.add('floating-particle');
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            container.appendChild(particle);
+        }
+
+        // Simple FAQ toggle
+        document.querySelectorAll('.glass-panel h4').forEach(header => {
+            header.addEventListener('click', () => {
+                const p = header.nextElementSibling;
+                const icon = header.querySelector('span');
+                if (p.classList.contains('hidden')) {
+                    p.classList.remove('hidden');
+                    icon.textContent = 'expand_less';
+                } else {
+                    p.classList.add('hidden');
+                    icon.textContent = 'expand_more';
+                }
+            });
+        });
+    </script>
+</body></html>
